@@ -1,0 +1,32 @@
+services:
+  frontend:
+    image: matheuspieropan/proposta-web
+    container_name: proposta-web-container
+    ports:
+      - "80:80"
+    networks:
+      - curso-network
+
+  postgres:
+    image: postgres
+    container_name: postgres-container
+    environment:
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: propostadb
+    ports:
+      - "5432:5432"
+    networks:
+      - curso-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: my-rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - curso-network
+
+networks:
+  curso-network:
+    driver: bridge
