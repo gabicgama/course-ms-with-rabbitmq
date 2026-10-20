@@ -9,11 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class PropostaPendenteListener {
 
-    private NotificacaoSnsService notificacaoSnsService;
+    private final NotificacaoSnsService notificacaoSnsService;
+
+    public PropostaPendenteListener(NotificacaoSnsService notificacaoSnsService) {
+        this.notificacaoSnsService = notificacaoSnsService;
+    }
 
     @RabbitListener(queues = "${rabbitmq.queue.proposta.pendente}")
     public void propostaPendente(Proposta proposta) {
         String mensagem = String.format(MensagemConstante.PROPOSTA_EM_ANALISE, proposta.getUsuario().getNome());
-        notificacaoSnsService.notificar(mensagem);
+        notificacaoSnsService.notificar(proposta.getUsuario().getTelefone(),mensagem);
     }
 }

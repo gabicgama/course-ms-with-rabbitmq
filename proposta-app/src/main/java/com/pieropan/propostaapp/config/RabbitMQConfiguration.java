@@ -66,7 +66,7 @@ public class RabbitMQConfiguration {
 
     @Bean
     public Binding criarBindingPropostaPendenteMSNotificacao() {
-        return BindingBuilder.bind(criarFilaPropostaConcluidaMsNotificacao())
+        return BindingBuilder.bind(criarFilaPropostaPendenteMsNotificacao())
                 .to(criarFanoutExchangePropostaPendente());
     }
 
