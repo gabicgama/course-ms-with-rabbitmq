@@ -30,17 +30,17 @@ public class PropostaSemIntegracao {
         this.notificationRabbitService = notificationRabbitService;
     }
 
-    @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
-    public void buscaPropostaSemIntegracao() {
-        propostaRepository.findAllByIntegradaIsFalse().forEach(proposta -> {
-            try {
-                notificationRabbitService.notificar(proposta, exchange);
-                atualizarProposta(proposta);
-            } catch (RuntimeException e) {
-                logger.error(e.getMessage());
-            }
-        });
-    }
+//    @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
+//    public void buscaPropostaSemIntegracao() {
+//        propostaRepository.findAllByIntegradaIsFalse().forEach(proposta -> {
+//            try {
+//                notificationRabbitService.notificar(proposta, exchange);
+//                atualizarProposta(proposta);
+//            } catch (RuntimeException e) {
+//                logger.error(e.getMessage());
+//            }
+//        });
+//    }
 
     private void atualizarProposta(Proposta proposta){
         proposta.setIntegrada(true);
