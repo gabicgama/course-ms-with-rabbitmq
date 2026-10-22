@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NotifacaoApplication {
+public class NotificacaoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NotifacaoApplication.class, args);
+		SpringApplication.run(NotificacaoApplication.class, args);
 	}
 
 }

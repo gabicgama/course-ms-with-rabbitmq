@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pieropan</groupId>
-	<artifactId>notifacao</artifactId>
+	<artifactId>notificacao</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>notifacao</name>
+	<name>notificacao</name>
 	<description>Microsserviço de notificação</description>
 	<properties>
 		<java.version>17</java.version>
