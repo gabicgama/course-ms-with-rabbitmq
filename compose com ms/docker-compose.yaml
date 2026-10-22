@@ -1,0 +1,22 @@
+version: '3.5'
+services:
+  proposta-app:
+    image: proposta-ms
+    ports:
+      - "8080:8080"
+    depends_on:
+      rabbit-mq:
+        condition: service_healthy
+    
+  rabbit-mq:
+    image: rabbitmq:3-management
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      timeout: 5s
+      interval: 5s
+      retries: 3
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: propostadb
